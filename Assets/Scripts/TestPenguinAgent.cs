@@ -72,7 +72,7 @@ public class TestPenguinAgent : Agent
         if (this.isFull) return;    // 배부른 동안에는 먹지 않음
         isFull = true;
         this.testPenguinArea.RemoveSpecificFish(fishGo);
-        AddReward(1f);
+        AddReward(1f);  // 안 먹으면 점수 줌
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -88,5 +88,28 @@ public class TestPenguinAgent : Agent
 
         actionsOut.DiscreteActions.Array[0] = forwardAction;
         actionsOut.DiscreteActions.Array[1] = turnAction;
+    }
+
+    private void RegurgitateFish()
+    {
+        if (this.isFull) return;    // 배부른 동안에는 먹지 않음
+        isFull = true;
+
+        GameObject regurgitateFish = Instantiate<GameObject>(this.regurgitatedFishPrefab);
+        regurgitateFish.transform.parent = this.transform.parent;
+        regurgitateFish.transform.position = this.babyGo.transform.position;
+        Destroy(regurgitateFish, 4f);
+
+        GameObject heart = Instantiate<GameObject>(this.heartPrefab);
+        heart.transform.parent = this.transform.parent;
+        heart.transform.position = this.babyGo.transform.position + Vector3.up;
+        Destroy(heart, 4f);
+
+        AddReward(1f);
+
+        if (this.testPenguinArea.FishRemaining <= 0)
+            EndEpisode();
+
+
     }
 }
