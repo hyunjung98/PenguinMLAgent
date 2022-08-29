@@ -11,35 +11,51 @@ public class TestFish : MonoBehaviour
     private float nextActionTime = -1f;
     private Vector3 targetPosition;
 
+    /// <summary>
+    /// Called every timestep
+    /// </summary>
     private void FixedUpdate()
     {
-        if (this.fishSpeed > 0f)
+        if (fishSpeed > 0f)
+        {
             Swim();
+        }
     }
 
+    /// <summary>
+    /// Swim between random positions
+    /// </summary>
     private void Swim()
     {
-        if (Time.fixedTime >= this.nextActionTime)
+        // If it's time for the next action, pick a new speed and destination
+        // Else, swim toward the destination
+        if (Time.fixedTime >= nextActionTime)
         {
-            this.randomizedSpeed = this.fishSpeed * UnityEngine.Random.Range(.5f, 1.5f);
-            this.targetPosition = TestPenguinArea.ChooseRandomPosition(this.transform.position, 100f, 260f, 2f, 13f);
+            // Randomize the speed
+            randomizedSpeed = fishSpeed * UnityEngine.Random.Range(.5f, 1.5f);
 
-            this.transform.rotation = Quaternion.LookRotation(this.targetPosition - this.transform.position, Vector3.up);
+            // Pick a random target
+            targetPosition = PenguinArea.ChooseRandomPosition(transform.parent.position, 100f, 260f, 2f, 13f);
 
-            float timeToGetThere = Vector3.Distance(this.transform.position, this.targetPosition) / this.randomizedSpeed;
-            this.nextActionTime = Time.fixedTime + timeToGetThere;
+            // Rotate toward the target
+            transform.rotation = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
+
+            // Calculate the time to get there
+            float timeToGetThere = Vector3.Distance(transform.position, targetPosition) / randomizedSpeed;
+            nextActionTime = Time.fixedTime + timeToGetThere;
         }
         else
         {
-            Vector3 moveVector = this.randomizedSpeed * this.transform.forward * Time.fixedDeltaTime;
-            if (moveVector.magnitude <= Vector3.Distance(this.transform.position, this.targetPosition))
+            // Make sure that the fish does not swim past the target
+            Vector3 moveVector = randomizedSpeed * transform.forward * Time.fixedDeltaTime;
+            if (moveVector.magnitude <= Vector3.Distance(transform.position, targetPosition))
             {
-                this.transform.position += moveVector;
+                transform.position += moveVector;
             }
             else
             {
-                this.transform.position = this.targetPosition;
-                this.nextActionTime = Time.fixedTime;
+                transform.position = targetPosition;
+                nextActionTime = Time.fixedTime;
             }
         }
     }

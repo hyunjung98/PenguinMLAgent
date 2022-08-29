@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1719462003622298615}
   - component: {fileID: 3474587434805671741}
   - component: {fileID: 4753984470484147882}
-  - component: {fileID: 3581133531616578230}
+  - component: {fileID: 3759574340630011251}
   m_Layer: 0
   m_Name: BabyPenguin
   m_TagString: baby
@@ -104,8 +104,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!136 &3581133531616578230
-CapsuleCollider:
+--- !u!135 &3759574340630011251
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -114,7 +114,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.25
-  m_Height: 0.4801184
-  m_Direction: 1
   m_Center: {x: 0, y: 0.24, z: 0}

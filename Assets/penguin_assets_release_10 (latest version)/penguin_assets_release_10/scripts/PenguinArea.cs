@@ -135,7 +135,7 @@ public class PenguinArea : MonoBehaviour
             fishObject.transform.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
 
             // Set the fish's parent to this area's transform
-            fishObject.transform.SetParent(transform);
+            fishObject.transform.SetParent(this.transform);
 
             // Keep track of the fish
             fishList.Add(fishObject);
