@@ -12,7 +12,7 @@ public class TestPenguinArea : MonoBehaviour
     [Tooltip("The TextMeshPro text that shows the cumulative reward of the agent")]
     public TextMeshPro cumulativeRewardText;
     [Tooltip("Prefab of a live fish")]
-    public Fish fishPrefab;
+    public TestFish fishPrefab;
 
     private List<GameObject> fishList;
 
@@ -98,7 +98,7 @@ public class TestPenguinArea : MonoBehaviour
         {
             GameObject fishGo = Instantiate<GameObject>(this.fishPrefab.gameObject);
             fishGo.transform.position = ChooseRandomPosition(transform.position, 100f, 260f, 2f, 13f) + Vector3.up * .5f;
-            fishGo.transform.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);\
+            fishGo.transform.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
 
             fishGo.transform.SetParent(transform);
             fishList.Add(fishGo);

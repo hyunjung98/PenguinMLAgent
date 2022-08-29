@@ -839,7 +839,7 @@ MonoBehaviour:
   testPenguinAgent: {fileID: 2335167533693029768}
   testPenguinBabyGo: {fileID: 1571029340173599256}
   cumulativeRewardText: {fileID: 1078103030996256058}
-  fishPrefab: {fileID: 0}
+  fishPrefab: {fileID: 6806305023462304201, guid: 28af1ad8afbafd74eaa7c4ffd88dd7fb, type: 3}
 --- !u!1 &8565927313799746380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1152,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Penguin
       objectReference: {fileID: 0}
+    - target: {fileID: 825837371056753417, guid: c1f5f8c4bc7a4144888efc8de2ba79a4, type: 3}
+      propertyPath: heartPrefab
+      value: 
+      objectReference: {fileID: 6378239799654820154, guid: af161d4f17109874ba94da6987446188, type: 3}
+    - target: {fileID: 825837371056753417, guid: c1f5f8c4bc7a4144888efc8de2ba79a4, type: 3}
+      propertyPath: regurgitatedFishPrefab
+      value: 
+      objectReference: {fileID: 7803830881971778202, guid: 6c9710115b8950f49bd535fc85b321a2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1f5f8c4bc7a4144888efc8de2ba79a4, type: 3}
 --- !u!114 &2335167533693029768 stripped
